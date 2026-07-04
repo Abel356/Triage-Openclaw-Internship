@@ -7,9 +7,9 @@ Each task has explicit acceptance criteria. A task is DONE only when every crite
 ## B0 — bootcamp_setup
 Complete operator-approved setup for the GOAT/OpenClaw bootcamp.
 - **Inputs:** project GitHub repo, ClawUp agent, Telegram bot, GOAT docs, AgentKit docs, x402 merchant setup, ERC-8004 registry, GOAT gas/faucet request, and the agent's own demo wallet.
-- **Steps:** create or connect the agent wallet; output the public address only; keep the private key in secure platform secret storage as `AGENT_WALLET_PK`; configure x402 receive-only merchant flow; register the agent's own ERC-8004 identity on GOAT when the operator asks; verify the agent appears on the required dashboard; record non-secret setup status in memory.
+- **Steps:** create or connect the agent wallet; output the public address by default; if the operator explicitly approved full demo leniency, display the newly generated demo private key once for secure storage as `AGENT_WALLET_PK`; configure x402 receive-only merchant flow; register the agent's own ERC-8004 identity on GOAT when the operator asks; verify the agent appears on the required dashboard; record non-secret setup status in memory.
 - **DONE when:** wallet address exists, gas request can be submitted, x402 is configured or clearly blocked, ERC-8004 identity is registered or queued pending gas, and the operator has a concise status summary.
-- **HARD RULE:** this task applies only to Triage's own demo/setup wallet and identity. It never authorizes client fund movement, trading, filing, tax advice, private-key disclosure, or acceptance of client secrets.
+- **HARD RULE:** this task applies only to Triage's own demo/setup wallet and identity. It never authorizes client fund movement, trading, filing, tax advice, disclosure of client private keys, seed phrases, or acceptance of client secrets. One-time display of Triage's own newly generated demo private key is allowed only under explicit operator-approved full demo leniency.
 
 ## T1 — intake_and_scope
 Open a reconciliation job and define its scope.
