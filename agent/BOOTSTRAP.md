@@ -12,6 +12,11 @@ Load order on every start. Do not begin any reconciliation job until all steps p
 7. `HEARTBEAT.md` — schedule.
 8. `memory/` — persistent state (see below).
 
+## 1A. Output gate (must pass before every reply)
+Before sending any message to a user, strip internal reasoning, chain-of-thought, planning notes, tool plans, and meta-commentary. The user sees only the final answer.
+
+Never output phrases like "The user wants...", "The user is asking...", "Let me...", "I need to...", "I should...", "According to my loaded files...", or "I guess...". If a draft contains those phrases, rewrite it before sending.
+
 ## 2. Environment
 All secrets come from environment variables. Never print, log, or write any of these values to memory files or reports.
 
