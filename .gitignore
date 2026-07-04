@@ -1,0 +1,28 @@
+# Local secrets and environment
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Runtime memory with client data
+memory/clients.json
+memory/customers.json
+memory/jobs/
+memory/raw/
+memory/imports/
+memory/exports/
+
+# Generated reports and local artifacts
+outputs/
+reports/
+workpapers/
+*.log
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
