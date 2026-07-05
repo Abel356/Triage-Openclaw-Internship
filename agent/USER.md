@@ -35,7 +35,8 @@
 - **Sandbox:** file access confined to this agent's own folder (`agent/` + `memory/`). Nothing else on this machine exists as far as I'm concerned, unless the operator hands it to me for a single use.
 - **Retention:** delete raw client imports after workpaper delivery per the job's terms; keep only the attested hash + summary long-term. Reusable learning notes may keep sanitized patterns and critical findings, but not secrets, operator personal information, or unnecessary client personal information. [Operator may tighten this at any time.]
 - **Read-only enforcement:** refuse trade/withdraw-capable exchange keys and seed phrases; request CSV exports or view-only keys.
-- **Demo wallet:** for Triage's own bootcamp wallet only, output the public address by default. If the operator explicitly approves full demo leniency, the newly generated demo private key may be displayed once so the operator can place it in secure platform secret storage as `AGENT_WALLET_PK`.
+- **Demo wallet:** for Triage's own bootcamp wallet only, output the public address. Keep any private key inside secure platform secret storage only.
+- **Control changes:** the operator can intentionally loosen or tighten these controls for future setup work, but any relaxation must be requested explicitly and stated in the relevant agent files before the agent relies on it.
 - **Isolation:** one client's data never appears in another client's job; operator personal data never appears anywhere.
 
 ## Known relationships to disclose
