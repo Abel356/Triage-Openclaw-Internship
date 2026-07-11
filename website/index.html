@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Triage reconstructs audit-defensible crypto cost basis across messy multi-chain histories. Form 8949-ready workpapers for CPAs." />
+  <title>Triage — Crypto-Tax Forensic Reconciliation</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Prata&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="letterbox letterbox--top" aria-hidden="true"></div>
+  <div class="letterbox letterbox--bottom" aria-hidden="true"></div>
+
+  <header class="nav">
+    <a class="nav__logo" href="#">Triage</a>
+    <nav class="nav__links" aria-label="Primary">
+      <a href="#gap">The gap</a>
+      <a href="#method">Method</a>
+      <a href="#proof">Proof</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <a class="nav__cta" href="https://github.com/Abel356/Triage-Openclaw-Internship" target="_blank" rel="noopener noreferrer">View repo</a>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <canvas class="hero__canvas" id="network" aria-hidden="true"></canvas>
+      <div class="hero__vignette" aria-hidden="true"></div>
+      <div class="hero__content">
+        <p class="hero__kicker">Crypto-tax forensic reconciliation</p>
+        <h1 class="hero__title">Every transfer<br />has a story.<br /><em>We find it.</em></h1>
+        <p class="hero__lead">
+          Triage rebuilds wallet-by-wallet cost basis across chains, bridges, and DeFi history.
+          Cited evidence. Honest gaps. A workpaper your CPA can sign.
+        </p>
+        <div class="hero__actions">
+          <a class="btn btn--primary" href="#contact">Request a pilot</a>
+          <a class="btn btn--ghost" href="#proof">See the demo</a>
+        </div>
+        <dl class="hero__status">
+          <div>
+            <dt>Status labels</dt>
+            <dd><span class="tag tag--ok">RECONCILED</span> <span class="tag tag--warn">ASSUMPTION</span> <span class="tag tag--gap">UNRECONCILED</span></dd>
+          </div>
+          <div>
+            <dt>Chain reads</dt>
+            <dd class="mono">GOAT · ETH · ARB · BASE · SOL</dd>
+          </div>
+        </dl>
+      </div>
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <section class="gap" id="gap">
+      <div class="gap__visual reveal">
+        <div class="gap__frame">
+          <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1200&q=80"
+            alt="Analyst reviewing financial charts on multiple monitors in a dim room"
+            width="1200"
+            height="800"
+            loading="lazy"
+          />
+          <div class="gap__scan" aria-hidden="true"></div>
+        </div>
+      </div>
+      <div class="gap__copy reveal">
+        <h2>Import tools stop where judgment begins.</h2>
+        <p>
+          Consumer crypto-tax software pulls transactions. It does not resolve self-transfers
+          misread as sales, bridge legs that break basis continuity, LP exits with missing lots,
+          or deposits from exchanges that no longer exist.
+        </p>
+        <p>
+          Crypto CPAs still clean this up by hand. Slow, expensive, and impossible to scale
+          before 1099-DA season.
+        </p>
+        <blockquote>
+          <p>Two tools, same wallets, $28k apart. Both wrong.</p>
+        </blockquote>
+      </div>
+    </section>
+
+    <section class="method" id="method">
+      <div class="method__intro reveal">
+        <h2>The forensic pipeline</h2>
+        <p>
+          Triage is not a filer. It reconstructs facts, cites every number, and labels what
+          cannot be proven.
+        </p>
+      </div>
+      <ol class="method__flow">
+        <li class="method__step reveal">
+          <div class="method__step-head">
+            <span class="method__icon" aria-hidden="true">◎</span>
+            <h3>Ingest & normalize</h3>
+          </div>
+          <p>Wallets, exchange CSVs, broker 1099-DAs. One chronological ledger with FMV at each event.</p>
+        </li>
+        <li class="method__step reveal">
+          <div class="method__step-head">
+            <span class="method__icon" aria-hidden="true">⇄</span>
+            <h3>Match transfers</h3>
+          </div>
+          <p>Self-transfers, bridge legs, wrapped assets. Basis carried across wallets, not phantom disposals.</p>
+        </li>
+        <li class="method__step reveal">
+          <div class="method__step-head">
+            <span class="method__icon" aria-hidden="true">∑</span>
+            <h3>Reconstruct basis</h3>
+          </div>
+          <p>FIFO, HIFO, or Spec-ID. Wallet-by-wallet per Rev. Proc. 2024-28. Every lot traceable to source.</p>
+        </li>
+        <li class="method__step reveal">
+          <div class="method__step-head">
+            <span class="method__icon" aria-hidden="true">⬡</span>
+            <h3>Deliver & attest</h3>
+          </div>
+          <p>Form 8949-ready workpaper. Hash attested on GOAT. Paid per report via x402.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section class="proof" id="proof">
+      <div class="proof__header reveal">
+        <h2>Same history. Different verdict.</h2>
+        <p>A deliberately tangled demo: cross-wallet transfers, a bridge, LP activity, staking income, one dead-exchange lot.</p>
+      </div>
+      <div class="proof__compare">
+        <article class="proof__panel proof__panel--fail reveal">
+          <header>
+            <h3>Consumer import</h3>
+            <span class="proof__badge proof__badge--bad">Phantom gain</span>
+          </header>
+          <ul>
+            <li>Self-transfer flagged as taxable disposal</li>
+            <li>Bridge outbound treated as full sale</li>
+            <li>Dead-exchange lot assigned $0 basis silently</li>
+            <li>1099-DA proceeds unexplained</li>
+          </ul>
+          <footer class="mono">gain: +$47,200 · confidence: hidden</footer>
+        </article>
+        <div class="proof__divider reveal" aria-hidden="true">
+          <span>vs</span>
+        </div>
+        <article class="proof__panel proof__panel--win reveal">
+          <header>
+            <h3>Triage workpaper</h3>
+            <span class="proof__badge proof__badge--good">Cited</span>
+          </header>
+          <ul>
+            <li>Self-transfer matched with tx evidence</li>
+            <li>Basis carried across bridge legs</li>
+            <li>Dead-exchange lot marked <strong>UNRECONCILED</strong> with exact gap</li>
+            <li>Broker mismatch explained line by line</li>
+          </ul>
+          <footer class="mono">gain: +$12,400 · attestation: on-chain</footer>
+        </article>
+      </div>
+    </section>
+
+    <section class="rails reveal" id="rails">
+      <div class="rails__copy">
+        <h2>Identity and payment are part of the product.</h2>
+        <p>
+          ERC-8004 registers who produced each workpaper. x402 handles per-report settlement in USDC.
+          GOAT Network carries both rails. Provenance, not decoration.
+        </p>
+      </div>
+      <ul class="rails__list">
+        <li><span class="mono">ERC-8004</span> Agent identity & report hash</li>
+        <li><span class="mono">x402</span> Per-report USDC payment</li>
+        <li><span class="mono">GOAT</span> Chain 2345 attestation</li>
+      </ul>
+    </section>
+
+    <section class="safety reveal" id="safety">
+      <h2>Hard boundaries</h2>
+      <div class="safety__grid">
+        <p>Never files a return.</p>
+        <p>Never signs as preparer.</p>
+        <p>Never moves client funds.</p>
+        <p>Never invents basis.</p>
+      </div>
+      <p class="safety__note">A human CPA reviews and signs. Triage reconstructs the ledger.</p>
+    </section>
+
+    <section class="contact reveal" id="contact">
+      <div class="contact__inner">
+        <h2>Pilot with a messy case.</h2>
+        <p>
+          Give Triage one redacted reconciliation. We return a cited workpaper and flag every
+          assumption. You tell us what holds up.
+        </p>
+        <div class="contact__actions">
+          <a class="btn btn--primary" href="https://t.me/goatbuilderhub/2032" target="_blank" rel="noopener noreferrer">Join bootcamp chat</a>
+          <a class="btn btn--ghost" href="https://github.com/Abel356/Triage-Openclaw-Internship" target="_blank" rel="noopener noreferrer">Read the repo</a>
+        </div>
+        <p class="contact__buyer">Built for crypto CPAs first. DeFi-heavy individuals second.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p>Triage · GOAT OpenClaw Summer Bootcamp 2026</p>
+    <p class="mono">Not tax advice. Not a preparer. Forensic reconstruction only.</p>
+  </footer>
+
+  <script src="/js/main.js" type="module"></script>
+</body>
+</html>
