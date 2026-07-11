@@ -102,3 +102,13 @@ if (reveals.length) {
     observer.observe(el);
   }
 }
+
+const contactSuccess = document.getElementById("contact-success");
+
+if (contactSuccess) {
+  const query = new URLSearchParams(window.location.search);
+
+  if (query.get("sent") === "1") {
+    contactSuccess.hidden = false;
+  }
+}
