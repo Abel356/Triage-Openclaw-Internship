@@ -194,19 +194,56 @@
 
     <section class="contact reveal" id="contact">
       <div class="contact__inner">
-        <h2>Pilot with a messy case.</h2>
-        <p>
-          Give Triage one redacted reconciliation. We return a cited workpaper and flag every
-          assumption. You tell us what holds up.
-        </p>
-        <div class="contact__actions">
-          <a class="btn btn--primary btn--icon" href="mailto:sabuabel2003@gmail.com" aria-label="Email Triage at sabuabel2003@gmail.com" title="Email sabuabel2003@gmail.com">
-            <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
-              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
-              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
-            </svg>
-          </a>
-          <a class="btn btn--ghost" href="https://github.com/Abel356/Triage-Openclaw-Internship" target="_blank" rel="noopener noreferrer">Read the repo</a>
+        <header class="contact__header">
+          <h2>Start a pilot conversation.</h2>
+          <p>Tell us what is messy, what you have tried, and what a useful reconciliation would look like.</p>
+        </header>
+        <form class="contact__form" action="https://formsubmit.co/sabuabel2003@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="New Triage pilot inquiry" />
+          <input type="hidden" name="_template" value="table" />
+          <input type="hidden" name="_next" value="https://triage-amber-iota.vercel.app/?sent=1#contact" />
+          <input type="hidden" name="_url" value="https://triage-amber-iota.vercel.app/#contact" />
+          <label class="contact__honeypot" aria-hidden="true">
+            Leave this field empty
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" />
+          </label>
+          <div class="contact__fields">
+            <label class="contact__field">
+              <span>Name</span>
+              <input type="text" name="name" placeholder="Your name" autocomplete="name" maxlength="100" required />
+            </label>
+            <label class="contact__field">
+              <span>Email</span>
+              <input type="email" name="email" placeholder="you@example.com" autocomplete="email" maxlength="160" required />
+            </label>
+            <label class="contact__field contact__field--wide">
+              <span>Subject</span>
+              <input type="text" name="subject" placeholder="What would you like help reconciling?" maxlength="140" required />
+            </label>
+            <label class="contact__field contact__field--wide">
+              <span>Message</span>
+              <textarea name="message" placeholder="Share the situation and desired outcome. Please do not include private keys or raw client records." maxlength="3000" required></textarea>
+            </label>
+          </div>
+          <p class="contact__success" id="contact-success" role="status" hidden>Thanks. Your message was sent and we will follow up by email.</p>
+          <button class="btn btn--primary contact__submit" type="submit">Send message</button>
+        </form>
+        <div class="contact__direct">
+          <p>Or reach out directly</p>
+          <div class="contact__direct-links">
+            <a class="contact__direct-link" href="mailto:sabuabel2003@gmail.com">
+              <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+              </svg>
+              <span>sabuabel2003@gmail.com</span>
+            </a>
+            <span class="contact__direct-divider" aria-hidden="true">·</span>
+            <a class="contact__direct-link" href="https://www.linkedin.com/in/abel-sabu-30651121a/" target="_blank" rel="noopener noreferrer">
+              <span class="contact__linkedin-icon" aria-hidden="true">in</span>
+              <span>LinkedIn profile</span>
+            </a>
+          </div>
         </div>
         <p class="contact__buyer">Built for crypto CPAs first. DeFi-heavy individuals second.</p>
       </div>
