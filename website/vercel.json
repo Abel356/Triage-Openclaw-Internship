@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/telegram",
+      "destination": "https://t.me/jeenahoyaabot",
+      "permanent": false
+    }
+  ]
+}
