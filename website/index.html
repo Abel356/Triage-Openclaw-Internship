@@ -22,6 +22,8 @@
       <a href="#method">Method</a>
       <a href="#proof">Proof</a>
       <a href="#demo">Demo</a>
+      <a href="#telegram-demo">Docs</a>
+      <a href="/telegram" target="_blank" rel="noopener noreferrer" aria-label="Open the Triage Telegram agent" data-telegram-placement="navigation">Try the Agent</a>
       <a href="#contact">Contact</a>
     </nav>
     <a class="nav__cta" href="https://github.com/Abel356/Triage-Openclaw-Internship" target="_blank" rel="noopener noreferrer">View repo</a>
@@ -41,7 +43,15 @@
         <div class="hero__actions">
           <a class="btn btn--primary" href="#contact">Request a pilot</a>
           <a class="btn btn--ghost" href="#demo">Watch the demo</a>
+          <a class="btn btn--telegram" href="/telegram" target="_blank" rel="noopener noreferrer" aria-label="Open the Triage Telegram agent" data-telegram-placement="hero">
+            <svg class="btn__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m22 2-7 20-4-9-9-4Z"></path>
+              <path d="M22 2 11 13"></path>
+            </svg>
+            <span>Try the live agent</span>
+          </a>
         </div>
+        <p class="hero__agent-note">Run a read-only wallet triage in Telegram.</p>
         <dl class="hero__status">
           <div>
             <dt>Status labels</dt>
@@ -127,6 +137,108 @@
           <p>Form 8949-ready workpaper. Hash attested on GOAT. Paid per report via x402.</p>
         </li>
       </ol>
+    </section>
+
+    <section class="telegram-demo" id="telegram-demo">
+      <header class="telegram-demo__header reveal">
+        <p class="telegram-demo__kicker">Live public demo</p>
+        <h2>Try Triage in Telegram</h2>
+        <p>
+          Test the Triage agent using a publicly documented demo wallet. The agent performs read-only blockchain analysis,
+          reconstructs wallet activity, identifies relevant transfers and contract interactions, and clearly reports anything it cannot verify.
+        </p>
+        <a class="btn btn--telegram telegram-demo__open" href="/telegram" target="_blank" rel="noopener noreferrer" aria-label="Open the Triage Telegram agent" data-telegram-placement="documentation">
+          <svg class="btn__icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m22 2-7 20-4-9-9-4Z"></path>
+            <path d="M22 2 11 13"></path>
+          </svg>
+          <span>Open Triage in Telegram</span>
+        </a>
+      </header>
+
+      <div class="telegram-demo__layout">
+        <div class="telegram-demo__guide reveal">
+          <section class="telegram-demo__block" aria-labelledby="getting-started-title">
+            <h3 id="getting-started-title">Getting started</h3>
+            <ol class="telegram-demo__steps">
+              <li><span class="telegram-demo__step-number mono">01</span><span>Open the Telegram bot.</span></li>
+              <li><span class="telegram-demo__step-number mono">02</span><span>Tap <strong>Start</strong> or send <code>/start</code>.</span></li>
+              <li><span class="telegram-demo__step-number mono">03</span><span>Paste the provided demo prompt into the chat.</span></li>
+            </ol>
+          </section>
+
+          <section class="telegram-demo__block" aria-labelledby="demo-capabilities-title">
+            <h3 id="demo-capabilities-title">What the demo shows</h3>
+            <ul class="telegram-demo__capabilities">
+              <li>Inspect a public wallet address.</li>
+              <li>Summarize balances and wallet activity.</li>
+              <li>Identify transfers and contract interactions.</li>
+              <li>Detect potential ERC-8004 and x402 activity.</li>
+              <li>Cite available transaction evidence.</li>
+              <li>Label unavailable or uncertain information honestly.</li>
+            </ul>
+            <p class="telegram-demo__limitation">
+              The public demo is a wallet-triage demonstration. Full multi-wallet cost-basis reconciliation may require wallet ownership information,
+              exchange CSV files, historical pricing data, and human CPA review.
+            </p>
+          </section>
+        </div>
+
+        <div class="prompt-card reveal">
+          <header class="prompt-card__header">
+            <div>
+              <p class="prompt-card__label mono">DEMO PROMPT</p>
+              <h3>Public wallet triage</h3>
+            </div>
+            <button class="prompt-card__copy" type="button" data-copy-prompt="telegram-prompt" aria-describedby="copy-status">
+              <span>Copy prompt</span>
+            </button>
+          </header>
+          <pre class="prompt-card__code"><code id="telegram-prompt">Perform a READ-ONLY crypto forensic analysis of this publicly documented demo wallet:
+
+Wallet: 0x7679E1f285335addBADE42fd44559F51c4B42123
+Network: GOAT Network mainnet
+Chain ID: 2345
+
+Do not sign transactions, transfer funds, approve spending, expose secrets, or perform any on-chain write.
+
+Retrieve and analyze all available wallet activity. Identify:
+
+1. Native-token and ERC-20 balances.
+2. Incoming and outgoing transfers.
+3. USDC or USDC.e payments.
+4. Contract interactions.
+5. ERC-8004 registration activity.
+6. x402 payments.
+7. AgentKit or gift-card-related activity, if available.
+
+For every finding, include available transaction hashes or explorer evidence. Clearly distinguish verified findings, assumptions, and unavailable information.
+
+End with a short explanation of what the wallet appears to have been used for.</code></pre>
+          <span class="sr-only" id="copy-status" aria-live="polite"></span>
+        </div>
+      </div>
+
+      <aside class="telegram-demo__notice reveal" aria-label="Telegram demo safety notice">
+        <strong>Public addresses only.</strong>
+        <p>Use only public wallet addresses. Never send private keys, seed phrases, passwords, API keys, or exchange credentials. The demo is read-only and does not move funds, sign transactions, file tax returns, or provide tax advice.</p>
+      </aside>
+
+      <div class="telegram-demo__faq reveal">
+        <h3>Troubleshooting</h3>
+        <details>
+          <summary>What should I do if the bot does not respond?</summary>
+          <p>Confirm that you opened the correct Telegram bot and sent <code>/start</code>. The agent may take a few moments to retrieve blockchain activity. Do not repeatedly submit the same request while an analysis is running.</p>
+        </details>
+        <details>
+          <summary>Can I test my own wallet?</summary>
+          <p>Yes. You may replace the demonstration address with a public wallet address you control or have permission to analyze. Never provide a private key or seed phrase.</p>
+        </details>
+        <details>
+          <summary>Does Triage file my taxes?</summary>
+          <p>No. Triage reconstructs and documents wallet activity for review. A qualified human professional remains responsible for tax conclusions and filing.</p>
+        </details>
+      </div>
     </section>
 
     <section class="proof" id="proof">
@@ -279,6 +391,7 @@
 
   <footer class="footer">
     <p>Triage · GOAT OpenClaw Summer Bootcamp 2026</p>
+    <p><a class="footer__agent-link" href="/telegram" target="_blank" rel="noopener noreferrer" aria-label="Open the Triage Telegram agent" data-telegram-placement="footer">Try the live Telegram agent</a></p>
     <p class="mono">Not tax advice. Not a preparer. Forensic reconstruction only.</p>
   </footer>
 
