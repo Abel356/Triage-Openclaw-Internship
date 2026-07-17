@@ -623,6 +623,97 @@ section {
   color: var(--accent);
 }
 
+.demo {
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+.demo__header {
+  max-width: 44rem;
+  margin-bottom: 2.5rem;
+}
+
+.demo__kicker {
+  margin: 0 0 0.8rem;
+  color: var(--accent);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.demo__header h2 {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  text-wrap: balance;
+}
+
+.demo__header > p:last-child {
+  margin: 0;
+  color: var(--muted);
+  text-wrap: pretty;
+}
+
+.demo__player {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 720 / 413;
+  border: 1px solid oklch(0.58 0.11 165 / 0.28);
+  border-radius: 8px;
+  background: oklch(0.03 0.006 210);
+  box-shadow: 0 2rem 7rem oklch(0.02 0 0 / 0.5);
+}
+
+.demo__player::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border: 1px solid oklch(0.93 0.012 210 / 0.05);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.demo__player video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.demo__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.25rem;
+  margin-top: 1.25rem;
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.demo__meta span:not(:last-child)::after {
+  content: "·";
+  margin-left: 1.25rem;
+  color: oklch(0.4 0.02 210);
+}
+
+.demo__meta .mono {
+  color: var(--primary);
+}
+
+@media (max-width: 560px) {
+  .demo__meta {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 0.5rem 1rem;
+  }
+
+  .demo__meta span::after {
+    display: none;
+  }
+}
+
 .rails {
   max-width: 72rem;
   margin: 0 auto;
