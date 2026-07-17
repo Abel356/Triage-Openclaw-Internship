@@ -70,3 +70,64 @@ Triage has a deliberately narrow authority model:
 - Seed user definition and growth metrics: `PILOT_TARGETS.md`.
 - Demo flow: `DEMO_DAY.md`.
 
+## Live Telegram Demo
+
+The live bot is **TriageBot** (`@jeenahoyaabot`):
+
+- Direct link: [https://t.me/jeenahoyaabot](https://t.me/jeenahoyaabot)
+- Open the bot and tap **Start**, or send `/start`.
+- Paste the read-only demonstration prompt below.
+
+Demonstration wallet: `0x7679E1f285335addBADE42fd44559F51c4B42123`
+
+```text
+Perform a READ-ONLY crypto forensic analysis of this publicly documented demo wallet:
+
+Wallet: 0x7679E1f285335addBADE42fd44559F51c4B42123
+Network: GOAT Network mainnet
+Chain ID: 2345
+
+Do not sign transactions, transfer funds, approve spending, expose secrets, or perform any on-chain write.
+
+Retrieve and analyze all available wallet activity. Identify:
+
+1. Native-token and ERC-20 balances.
+2. Incoming and outgoing transfers.
+3. USDC or USDC.e payments.
+4. Contract interactions.
+5. ERC-8004 registration activity.
+6. x402 payments.
+7. AgentKit or gift-card-related activity, if available.
+
+For every finding, include available transaction hashes or explorer evidence. Clearly distinguish verified findings, assumptions, and unavailable information.
+
+End with a short explanation of what the wallet appears to have been used for.
+```
+
+### Supported Capabilities
+
+- Inspect a public wallet address and summarize balances and activity.
+- Identify transfers, payments, and contract interactions.
+- Detect potential ERC-8004, x402, and AgentKit-related activity.
+- Cite available transaction hashes or explorer evidence.
+- Distinguish verified findings, assumptions, and unavailable information.
+
+### Safety Boundaries
+
+- Use public wallet addresses only.
+- Never provide private keys, seed phrases, passwords, API keys, or exchange credentials.
+- The public demo does not move funds, sign transactions, perform on-chain writes, file tax returns, or provide tax advice.
+
+### Known Limitations
+
+The public bot demonstrates single-wallet triage. Full multi-wallet cost-basis reconciliation may require wallet ownership information, exchange CSV files, historical pricing data, and human CPA review. Explorer or RPC availability may also limit the evidence the bot can retrieve.
+
+### Troubleshooting
+
+- If the bot does not respond, confirm that you opened `@jeenahoyaabot` and sent `/start`.
+- Allow the agent a few moments to retrieve blockchain activity; do not repeatedly submit the same request while analysis is running.
+- You may substitute a public wallet you control or have permission to analyze. Never provide a private key or seed phrase.
+- Triage does not file taxes. A qualified human professional remains responsible for tax conclusions and filing.
+
+See [`TELEGRAM_DEMO.md`](TELEGRAM_DEMO.md) for the developer-facing demo guide.
+

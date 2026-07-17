@@ -112,3 +112,67 @@ if (contactSuccess) {
     contactSuccess.hidden = false;
   }
 }
+
+const telegramLinks = document.querySelectorAll("[data-telegram-placement]");
+
+for (const link of telegramLinks) {
+  link.addEventListener("click", () => {
+    const placement = link.dataset.telegramPlacement;
+    const detail = { name: "telegram_agent_opened", placement };
+
+    document.dispatchEvent(new CustomEvent("telegram_agent_opened", { detail }));
+
+    if (typeof window.va === "function") {
+      window.va("event", { name: detail.name, data: { placement } });
+    }
+  });
+}
+
+async function copyText(text) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text);
+    return;
+  }
+
+  const textarea = document.createElement("textarea");
+  textarea.value = text;
+  textarea.readOnly = true;
+  textarea.style.position = "fixed";
+  textarea.style.left = "-9999px";
+  document.body.append(textarea);
+  textarea.select();
+  const copied = document.execCommand("copy");
+  textarea.remove();
+
+  if (!copied) {
+    throw new Error("Copy command failed");
+  }
+}
+
+const copyButtons = document.querySelectorAll("[data-copy-prompt]");
+
+for (const button of copyButtons) {
+  button.addEventListener("click", async () => {
+    const prompt = document.getElementById(button.dataset.copyPrompt);
+    const status = document.getElementById("copy-status");
+    const label = button.querySelector("span");
+
+    if (!prompt || !label) return;
+
+    try {
+      await copyText(prompt.textContent.trim());
+      label.textContent = "Copied";
+      button.classList.add("is-copied");
+      if (status) status.textContent = "Demo prompt copied to clipboard.";
+
+      window.clearTimeout(button.copyResetTimer);
+      button.copyResetTimer = window.setTimeout(() => {
+        label.textContent = "Copy prompt";
+        button.classList.remove("is-copied");
+        if (status) status.textContent = "";
+      }, 2200);
+    } catch {
+      if (status) status.textContent = "The demo prompt could not be copied. Select the prompt and copy it manually.";
+    }
+  });
+}
