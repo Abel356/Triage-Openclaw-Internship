@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="How Abel Sabu used ClawUp to turn Triage from an agent concept into a public, read-only crypto-tax reconciliation demo with explicit safety boundaries." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://triage-amber-iota.vercel.app/guides/how-i-used-clawup-to-build-triage/" />
+
+  <meta property="og:type" content="article" />
+  <meta property="og:site_name" content="Triage" />
+  <meta property="og:title" content="How I Used ClawUp to Build Triage" />
+  <meta property="og:description" content="The product choice, agent structure, public demo, safety boundaries, and lessons behind Triage." />
+  <meta property="og:url" content="https://triage-amber-iota.vercel.app/guides/how-i-used-clawup-to-build-triage/" />
+  <meta property="og:image" content="https://triage-amber-iota.vercel.app/assets/triage-preview.png" />
+  <meta property="og:image:width" content="1728" />
+  <meta property="og:image:height" content="900" />
+  <meta property="og:image:alt" content="Triage — evidence-first crypto-tax reconciliation" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How I Used ClawUp to Build Triage" />
+  <meta name="twitter:description" content="From agent concept to a public, read-only crypto-tax reconciliation demo." />
+  <meta name="twitter:image" content="https://triage-amber-iota.vercel.app/assets/triage-preview.png" />
+  <meta name="twitter:image:alt" content="Triage — evidence-first crypto-tax reconciliation" />
+
+  <title>How I Used ClawUp to Build Triage</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Prata&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How I Used ClawUp to Build Triage",
+    "description": "How Abel Sabu used ClawUp to turn Triage from an agent concept into a public, read-only crypto-tax reconciliation demo with explicit safety boundaries.",
+    "url": "https://triage-amber-iota.vercel.app/guides/how-i-used-clawup-to-build-triage/",
+    "mainEntityOfPage": "https://triage-amber-iota.vercel.app/guides/how-i-used-clawup-to-build-triage/",
+    "image": "https://triage-amber-iota.vercel.app/assets/triage-preview.png",
+    "datePublished": "2026-08-04",
+    "dateModified": "2026-08-04",
+    "author": {
+      "@type": "Person",
+      "name": "Abel Sabu",
+      "url": "https://x.com/abl_373"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Abel Sabu"
+    },
+    "isPartOf": {
+      "@type": "WebSite",
+      "name": "Triage",
+      "url": "https://triage-amber-iota.vercel.app/"
+    }
+  }
+  </script>
+</head>
+<body class="article-page">
+  <header class="article-nav">
+    <a class="article-nav__brand" href="/">Triage</a>
+    <a class="article-nav__back" href="/#faq">Back to product and FAQ</a>
+  </header>
+
+  <main>
+    <article>
+      <header class="article-hero">
+        <p class="article-hero__kicker">Stage 2 build note</p>
+        <h1>How I Used ClawUp to Build Triage</h1>
+        <p class="article-hero__lede">
+          I did not want to build a generic chatbot. I wanted a narrow agent with a real buyer,
+          a falsifiable output, and hard boundaries. ClawUp gave Triage a public surface where I
+          could test that product idea safely.
+        </p>
+        <div class="article-hero__meta">
+          <span>By Abel Sabu</span>
+          <span>August 4, 2026</span>
+          <span>8 minute read</span>
+        </div>
+      </header>
+
+      <div class="article-content">
+        <h2>The idea got narrower before it got better</h2>
+        <p>
+          Stage 1 began with a broad prompt: build an AI agent. I explored security-intake and
+          governance-assurance directions first, but I could not find a durable edge strong enough
+          to justify another general-purpose agent. Crypto-tax reconciliation was different. People
+          with activity across wallets, bridges, exchanges, and DeFi protocols already spend real
+          time and money cleaning up incomplete records, and CPAs need evidence they can inspect.
+        </p>
+        <p>
+          That led to Triage: an evidence-first reconstruction tool that organizes what can be
+          supported, labels what cannot, and leaves the final review with a human. The key product
+          decision was not “use an LLM.” It was to make uncertainty visible instead of hiding it.
+        </p>
+
+        <div class="article-callout">
+          <p><strong>The product contract:</strong> cited evidence, honest gaps, and no invented cost basis.</p>
+        </div>
+
+        <h2>What ClawUp changed</h2>
+        <p>
+          ClawUp turned the internal agent concept into a public Telegram experience. That mattered
+          because a product cannot be evaluated only through its repository or architecture. A user
+          needs a clear entry point, a concrete task, and an output they can challenge.
+        </p>
+        <p>
+          For the public demo, I chose a deliberately narrow flow: inspect a published wallet on
+          GOAT Network using public, read-only data. The prompt explicitly forbids signatures,
+          writes, transfers, approvals, and requests for secrets. That gives people something real
+          to test without pretending that a single wallet scan can produce a complete tax result.
+        </p>
+
+        <h2>The build, step by step</h2>
+        <ol>
+          <li><strong>Define the job.</strong> Reconstruct messy crypto activity and produce evidence a taxpayer or CPA can review.</li>
+          <li><strong>Define the boundaries.</strong> Never file, sign as a preparer, move funds, request secrets, or invent missing basis.</li>
+          <li><strong>Give the agent durable context.</strong> Product identity, users, methodology, safety rules, and known limitations live in project memory rather than in one oversized prompt.</li>
+          <li><strong>Create one public test.</strong> The Telegram demo uses a known public address, chain 2345, and a reproducible read-only request.</li>
+          <li><strong>Separate evidence from interpretation.</strong> Observable balances, transactions, contracts, and hashes should be distinguished from hypotheses and unresolved gaps.</li>
+          <li><strong>Publish the limitations.</strong> Wallet ownership, off-chain records, historical valuation, complete cost basis, and final tax treatment still require more evidence and human review.</li>
+        </ol>
+
+        <h2>Where GOAT, ERC-8004, and x402 fit</h2>
+        <p>
+          GOAT Network provides the environment for the public wallet demonstration. ERC-8004 and
+          x402 shape the longer-term product design around agent identity, report provenance, and
+          per-report settlement. Those rails are useful only when they reinforce the evidence trail;
+          they are not substitutes for a correct reconciliation.
+        </p>
+        <p>
+          The current public experience should therefore be read as a constrained product demo, not
+          a claim that every identity, attestation, payment, or tax workflow is production-complete.
+          That distinction is important to how I am approaching Stage 2.
+        </p>
+
+        <h2>What the demo proves — and what it does not</h2>
+        <h3>It can demonstrate</h3>
+        <ul>
+          <li>A public user can reach Triage through Telegram.</li>
+          <li>The agent can receive a constrained wallet-analysis request.</li>
+          <li>The result can distinguish traceable observations from unresolved information.</li>
+          <li>The interaction can preserve explicit read-only safety boundaries.</li>
+        </ul>
+
+        <h3>It cannot establish by itself</h3>
+        <ul>
+          <li>Who owns the wallet or why each transaction occurred.</li>
+          <li>Records held only by centralized exchanges or other off-chain systems.</li>
+          <li>Historical fair-market value and a complete, supported cost-basis history.</li>
+          <li>The correct final tax treatment or readiness to file.</li>
+        </ul>
+
+        <h2>What Stage 2 means for Triage</h2>
+        <p>
+          Stage 1 proved I could define and ship an agent. Stage 2 is about learning whether it can
+          become a business. That means talking to crypto CPAs and DeFi-heavy taxpayers, documenting
+          real workflows, measuring where the reconstruction saves time, and publishing useful
+          material that answers exact questions. The website, FAQ, demo walkthrough, and this guide
+          are part of making the product understandable before asking anyone to trust it.
+        </p>
+        <p>
+          The next evidence I care about is not another feature list. It is whether a real user can
+          bring a messy case, inspect Triage’s evidence, challenge its gaps, and say the resulting
+          workpaper made review easier.
+        </p>
+
+        <h2>Try the same public test</h2>
+        <p>
+          The <a href="/#telegram-demo">live-demo section</a> publishes the wallet address, chain,
+          safety rules, and exact prompt. Use only public data. Do not share a private key or seed
+          phrase, and do not approve a signature or transaction.
+        </p>
+
+        <section class="article-referral" aria-labelledby="clawup-referral-title">
+          <h2 id="clawup-referral-title">Build your own agent with ClawUp</h2>
+          <p>
+            If this build pattern is useful, you can explore ClawUp through Triage’s assigned
+            referral link. Using the link may be attributed to this project’s Stage 2 ecosystem
+            contribution.
+          </p>
+          <p><a href="https://clawup.org/?ref=287c2c37a2" target="_blank" rel="noopener noreferrer sponsored">Explore ClawUp through the Triage referral link</a></p>
+        </section>
+
+        <h2>Sources and project links</h2>
+        <ul>
+          <li><a href="https://triage-amber-iota.vercel.app/">Triage product site</a></li>
+          <li><a href="https://github.com/Abel356/Triage-Openclaw-Internship">Triage repository</a></li>
+          <li><a href="https://docs.clawup.org/src/quick-start">ClawUp quick start</a></li>
+          <li><a href="https://x.com/abl_373">Abel Sabu on X</a></li>
+        </ul>
+      </div>
+    </article>
+  </main>
+
+  <footer class="article-footer">
+    Triage performs forensic reconstruction. It does not provide tax advice or replace professional review.
+  </footer>
+</body>
+</html>

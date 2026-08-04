@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://triage-amber-iota.vercel.app/sitemap.xml

@@ -12,8 +12,9 @@ Safe-to-commit files in this folder are templates and empty knowledge indexes on
 - `jobs/<jobId>/` - raw imports, normalized ledgers, assumptions, findings, workpapers,
   JSON outputs, and attestation hashes. Ignored by Git.
 - `knowledge/CRITICAL_FINDINGS.md` - sanitized append-only index of important lessons.
+- `knowledge/STAGE_2_CONTEXT.md` - canonical Stage 2 goals, deadlines, evidence rules,
+  metrics, priorities, and known/open program context.
 - `rules/` - jurisdiction rule notes with citations.
 - `patterns/` - reusable reconciliation patterns.
 
 Do not commit live client data or raw source documents.
-

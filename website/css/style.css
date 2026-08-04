@@ -997,6 +997,96 @@ section {
   color: var(--primary);
 }
 
+.demo__transcript {
+  margin-top: clamp(2.5rem, 6vw, 4.5rem);
+  padding: clamp(1.5rem, 4vw, 3rem);
+  border: 1px solid oklch(0.2 0.015 210);
+  border-radius: 8px;
+  background: linear-gradient(145deg, oklch(0.12 0.014 210), oklch(0.09 0.012 210));
+}
+
+.transcript__intro {
+  max-width: 48rem;
+}
+
+.transcript__intro h3 {
+  margin: 0 0 0.8rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.55rem, 3vw, 2.2rem);
+  font-weight: 400;
+}
+
+.transcript__intro > p:last-child,
+.transcript__facts dd,
+.transcript__steps p,
+.transcript__note {
+  color: var(--muted);
+}
+
+.transcript__facts {
+  display: grid;
+  gap: 0;
+  margin: 2rem 0 0;
+  border-top: 1px solid oklch(0.2 0.015 210);
+}
+
+.transcript__facts > div {
+  display: grid;
+  gap: 0.35rem;
+  padding: 1.1rem 0;
+  border-bottom: 1px solid oklch(0.2 0.015 210);
+}
+
+.transcript__facts dt {
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.transcript__facts dd {
+  margin: 0;
+}
+
+.transcript__steps {
+  display: grid;
+  gap: 0;
+  margin: 2rem 0 0;
+  padding: 0;
+  list-style: none;
+  counter-reset: none;
+}
+
+.transcript__steps li {
+  display: grid;
+  grid-template-columns: 2.5rem 1fr;
+  gap: 0.75rem;
+  align-items: start;
+  padding: 0.75rem 0;
+}
+
+.transcript__steps .mono {
+  color: var(--accent);
+}
+
+.transcript__steps p,
+.transcript__note {
+  margin: 0;
+}
+
+.transcript__note {
+  margin-top: 1.5rem;
+  font-size: 0.82rem;
+}
+
+@media (min-width: 760px) {
+  .transcript__facts > div {
+    grid-template-columns: minmax(9rem, 0.34fr) 1fr;
+    gap: 1.5rem;
+  }
+}
+
 @media (max-width: 560px) {
   .demo__meta {
     display: grid;
@@ -1090,6 +1180,251 @@ section {
   color: var(--muted);
   margin: 0;
   font-size: 0.95rem;
+}
+
+.founder-faq {
+  max-width: 76rem;
+  margin: 0 auto;
+}
+
+.founder-faq__header {
+  max-width: 48rem;
+  margin-bottom: clamp(2.5rem, 6vw, 4rem);
+}
+
+.founder-faq__header h2 {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400;
+}
+
+.founder-faq__header > p:last-child {
+  margin: 0;
+  color: var(--muted);
+}
+
+.founder-faq__layout {
+  display: grid;
+  gap: 2.5rem;
+}
+
+.founder-faq__items {
+  border-top: 1px solid oklch(0.2 0.015 210);
+}
+
+.founder-faq__items details {
+  border-bottom: 1px solid oklch(0.2 0.015 210);
+}
+
+.founder-faq__items summary {
+  position: relative;
+  padding: 1.35rem 2.5rem 1.35rem 0;
+  cursor: pointer;
+  color: var(--ink);
+  font-weight: 600;
+  list-style: none;
+}
+
+.founder-faq__items summary::-webkit-details-marker {
+  display: none;
+}
+
+.founder-faq__items summary::after {
+  content: "+";
+  position: absolute;
+  right: 0;
+  color: var(--primary);
+  font-family: var(--font-mono);
+}
+
+.founder-faq__items details[open] summary::after {
+  content: "−";
+}
+
+.founder-faq__items details p {
+  max-width: 48rem;
+  margin: -0.3rem 0 1.35rem;
+  color: var(--muted);
+}
+
+.guide-card {
+  align-self: start;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  border: 1px solid oklch(0.58 0.11 165 / 0.35);
+  background: radial-gradient(circle at 100% 0%, oklch(0.58 0.11 165 / 0.13), transparent 52%), var(--surface);
+}
+
+.guide-card .mono {
+  margin: 0 0 1rem;
+  color: var(--primary);
+  font-size: 0.76rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.guide-card h3 {
+  margin: 0 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.45rem, 3vw, 2rem);
+  font-weight: 400;
+  line-height: 1.25;
+}
+
+.guide-card > p:not(.mono) {
+  margin: 0 0 1.5rem;
+  color: var(--muted);
+}
+
+@media (min-width: 900px) {
+  .founder-faq__layout {
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.42fr);
+    align-items: start;
+  }
+}
+
+/* Focused guide pages */
+.article-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 80% 8%, oklch(0.58 0.11 165 / 0.12), transparent 32rem),
+    var(--bg);
+}
+
+.article-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.35rem clamp(1.5rem, 5vw, 5rem);
+  border-bottom: 1px solid oklch(0.2 0.015 210);
+}
+
+.article-nav__brand {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.article-nav__back {
+  color: var(--muted);
+  font-size: 0.88rem;
+}
+
+.article-nav__back:hover,
+.article-content a:hover {
+  color: var(--accent);
+}
+
+.article-hero,
+.article-content,
+.article-footer {
+  width: min(100% - 3rem, 52rem);
+  margin-inline: auto;
+}
+
+.article-hero {
+  padding-block: clamp(5rem, 12vw, 9rem) clamp(3rem, 7vw, 5rem);
+}
+
+.article-hero__kicker {
+  margin: 0 0 1rem;
+  color: var(--primary);
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.article-hero h1 {
+  margin: 0 0 1.5rem;
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 400;
+  line-height: 1.06;
+  text-wrap: balance;
+}
+
+.article-hero__lede {
+  max-width: 44rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: clamp(1.05rem, 2vw, 1.25rem);
+}
+
+.article-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  margin-top: 2rem;
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+}
+
+.article-content {
+  padding-bottom: clamp(5rem, 12vw, 9rem);
+}
+
+.article-content h2 {
+  margin: 3.5rem 0 1rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.7rem, 4vw, 2.45rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.article-content h3 {
+  margin: 2.25rem 0 0.65rem;
+  font-size: 1.1rem;
+}
+
+.article-content p,
+.article-content li {
+  color: oklch(0.76 0.018 210);
+}
+
+.article-content a {
+  color: var(--primary);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.article-content ol,
+.article-content ul {
+  padding-left: 1.4rem;
+}
+
+.article-content li + li {
+  margin-top: 0.7rem;
+}
+
+.article-callout {
+  margin: 2rem 0;
+  padding: 1.25rem 1.4rem;
+  border-left: 3px solid var(--accent);
+  background: var(--surface);
+}
+
+.article-callout p {
+  margin: 0;
+}
+
+.article-referral {
+  margin-top: 2.5rem;
+  padding: clamp(1.5rem, 4vw, 2.25rem);
+  border: 1px solid oklch(0.58 0.11 165 / 0.35);
+  background: var(--surface);
+}
+
+.article-referral h2 {
+  margin-top: 0;
+}
+
+.article-footer {
+  padding-block: 2rem 3.5rem;
+  border-top: 1px solid oklch(0.2 0.015 210);
+  color: var(--muted);
+  font-size: 0.82rem;
 }
 
 .contact {
