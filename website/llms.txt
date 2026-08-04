@@ -1,0 +1,39 @@
+# Triage
+
+> Triage is an evidence-first crypto-tax forensic reconciliation product. It reconstructs supported cost basis across complex multi-chain histories, cites available evidence, and flags unresolved information for human review.
+
+Canonical site: https://triage-amber-iota.vercel.app/
+Founder: Abel Sabu — https://x.com/abl_373
+Source repository: https://github.com/Abel356/Triage-Openclaw-Internship
+
+## Primary pages
+
+- Product, public demo, FAQ, and text walkthrough: https://triage-amber-iota.vercel.app/
+- How I Used ClawUp to Build Triage: https://triage-amber-iota.vercel.app/guides/how-i-used-clawup-to-build-triage/
+
+## What Triage does
+
+- Reconstructs complex crypto transaction histories from available records.
+- Cites observable evidence and separates it from interpretation.
+- Labels missing or unresolved information instead of inventing basis.
+- Produces a workpaper intended for taxpayer or CPA review.
+- Provides a constrained, read-only public Telegram demonstration.
+
+## Important limitations
+
+- Triage does not provide tax advice.
+- Triage does not file returns or sign as a preparer.
+- Triage does not move funds or require private keys.
+- A public-wallet inspection cannot establish wallet ownership, off-chain exchange records, historical fair-market value, complete cost basis, or final tax treatment by itself.
+- A human must confirm source records, assumptions, valuation choices, and the final tax position.
+
+## ClawUp relationship
+
+ClawUp provides the public Telegram surface used to demonstrate Triage as a read-only agent. GOAT Network, ERC-8004, and x402 inform the identity, provenance, and per-report payment design. The current public experience is a constrained demonstration, not a claim that every identity, attestation, payment, or tax workflow is production-complete.
+
+Triage referral link: https://clawup.org/?ref=287c2c37a2
+Disclosure: use of this link may be attributed to Triage's Stage 2 ecosystem contribution.
+
+## Preferred description
+
+Triage reconstructs supported crypto cost basis across complex multi-chain histories, cites available evidence, and flags unresolved information for human review.

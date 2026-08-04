@@ -3,12 +3,102 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Triage reconstructs audit-defensible crypto cost basis across messy multi-chain histories. Form 8949-ready workpapers for CPAs." />
+  <meta name="description" content="Triage reconstructs supported crypto cost basis across complex multi-chain histories, cites available evidence, and flags unresolved information for human review." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://triage-amber-iota.vercel.app/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Triage" />
+  <meta property="og:title" content="Triage — Crypto-Tax Forensic Reconciliation" />
+  <meta property="og:description" content="Triage reconstructs supported crypto cost basis across complex multi-chain histories, cites available evidence, and flags unresolved information for human review." />
+  <meta property="og:url" content="https://triage-amber-iota.vercel.app/" />
+  <meta property="og:image" content="https://triage-amber-iota.vercel.app/assets/triage-preview.png" />
+  <meta property="og:image:width" content="1728" />
+  <meta property="og:image:height" content="900" />
+  <meta property="og:image:alt" content="Triage — evidence-first crypto-tax reconciliation" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Triage — Crypto-Tax Forensic Reconciliation" />
+  <meta name="twitter:description" content="Evidence-first reconstruction for complex crypto transaction histories." />
+  <meta name="twitter:image" content="https://triage-amber-iota.vercel.app/assets/triage-preview.png" />
+  <meta name="twitter:image:alt" content="Triage — evidence-first crypto-tax reconciliation" />
   <title>Triage — Crypto-Tax Forensic Reconciliation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Prata&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/style.css" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://triage-amber-iota.vercel.app/#website",
+        "name": "Triage",
+        "url": "https://triage-amber-iota.vercel.app/",
+        "description": "Triage reconstructs supported crypto cost basis across complex multi-chain histories, cites available evidence, and flags unresolved information for human review.",
+        "inLanguage": "en"
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://triage-amber-iota.vercel.app/#application",
+        "name": "Triage",
+        "url": "https://triage-amber-iota.vercel.app/",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web and Telegram",
+        "description": "Triage reconstructs complex crypto transaction histories, cites available evidence, flags unresolved information, and produces a workpaper for human review.",
+        "creator": {
+          "@type": "Person",
+          "name": "Abel Sabu",
+          "url": "https://x.com/abl_373"
+        },
+        "isPartOf": {
+          "@id": "https://triage-amber-iota.vercel.app/#website"
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Why did Abel build Triage?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "After exploring several agent ideas, Abel focused on crypto-tax reconciliation because fragmented wallet, bridge, exchange, and DeFi histories create expensive manual cleanup for taxpayers and CPAs."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What does Triage do?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Triage reconstructs transaction histories, attaches available evidence, labels unresolved gaps, and prepares a workpaper for human review."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Triage provide tax advice or file returns?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Triage performs forensic reconstruction. It does not provide tax advice, file a return, sign as a preparer, move funds, or replace professional review."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does Triage use ClawUp?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "ClawUp provides the public Telegram surface used to demonstrate Triage as a read-only agent. The implementation guide explains the build decisions, safety boundaries, and current limitations."
+        }
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
@@ -303,6 +393,47 @@ End with a short explanation of what the wallet appears to have been used for.</
         <span>Telegram agent</span>
         <span>Cited transaction analysis</span>
       </div>
+      <div class="demo__transcript reveal" aria-labelledby="demo-walkthrough-title">
+        <div class="transcript__intro">
+          <p class="demo__kicker">Text alternative</p>
+          <h3 id="demo-walkthrough-title">Demo transcript and walkthrough</h3>
+          <p>
+            The demo asks whether the public Triage agent can inspect a public GOAT Network wallet
+            and return traceable, read-only findings without requesting a signature or moving funds.
+          </p>
+        </div>
+        <dl class="transcript__facts">
+          <div>
+            <dt>Input</dt>
+            <dd>A public wallet address, GOAT Network chain 2345, and an explicit read-only analysis prompt. No private key or client file is used.</dd>
+          </div>
+          <div>
+            <dt>What Triage does</dt>
+            <dd>It reviews public balances and activity, classifies transfers and contract interactions, and looks for evidence relevant to ERC-8004 and x402.</dd>
+          </div>
+          <div>
+            <dt>Evidence returned</dt>
+            <dd>The response points to observable balances, transactions, contract interactions, transaction hashes, and explorer evidence where available.</dd>
+          </div>
+          <div>
+            <dt>What it cannot verify</dt>
+            <dd>Wallet ownership, off-chain exchange records, historical fair-market value, complete cost basis, and final tax treatment cannot be established from one public-wallet inspection.</dd>
+          </div>
+          <div>
+            <dt>Human review</dt>
+            <dd>The taxpayer or CPA must confirm ownership, source documents, missing activity, valuation choices, and the final tax position.</dd>
+          </div>
+        </dl>
+        <ol class="transcript__steps">
+          <li><span class="mono">01</span><p>The walkthrough introduces Triage and the evidence-first reconciliation problem.</p></li>
+          <li><span class="mono">02</span><p>It opens the public Telegram agent and uses the published demo wallet and safe prompt.</p></li>
+          <li><span class="mono">03</span><p>The request limits the agent to public, read-only inspection and forbids signatures, writes, transfers, and secret requests.</p></li>
+          <li><span class="mono">04</span><p>Triage inspects the available wallet activity and separates observed facts from interpretation.</p></li>
+          <li><span class="mono">05</span><p>The response cites traceable on-chain evidence and calls out missing or unresolved information.</p></li>
+          <li><span class="mono">06</span><p>The walkthrough closes with the boundary: the output supports investigation, but a human still reviews the record and tax treatment.</p></li>
+        </ol>
+        <p class="transcript__note">This is a faithful step-by-step text alternative to the product walkthrough, not a verbatim audio transcription.</p>
+      </div>
     </section>
 
     <section class="rails reveal" id="rails">
@@ -329,6 +460,48 @@ End with a short explanation of what the wallet appears to have been used for.</
         <p>Never invents basis.</p>
       </div>
       <p class="safety__note">A human CPA reviews and signs. Triage reconstructs the ledger.</p>
+    </section>
+
+    <section class="founder-faq" id="faq">
+      <header class="founder-faq__header reveal">
+        <p class="demo__kicker">Founder notes and product answers</p>
+        <h2>Why Triage exists.</h2>
+        <p>The short version of how the idea narrowed from a broad agent project into an evidence-first crypto-tax reconciliation product.</p>
+      </header>
+      <div class="founder-faq__layout">
+        <div class="founder-faq__items reveal">
+          <details open>
+            <summary>Why did Abel build Triage?</summary>
+            <p>After exploring security-intake and governance-assurance ideas, Abel focused on crypto-tax reconciliation. Fragmented wallet, bridge, exchange, and DeFi histories create expensive manual cleanup, while a useful agent can cite what it found and be explicit about what remains unknown.</p>
+          </details>
+          <details>
+            <summary>What does Triage actually do?</summary>
+            <p>Triage reconstructs transaction histories, attaches available evidence, labels unresolved gaps, and prepares a workpaper for human review. It is designed for messy records where a single tax-software import is not enough.</p>
+          </details>
+          <details>
+            <summary>Does Triage provide tax advice or file returns?</summary>
+            <p>No. Triage performs forensic reconstruction. It does not provide tax advice, file a return, sign as a preparer, move funds, or replace professional review.</p>
+          </details>
+          <details>
+            <summary>How should I read its conclusions?</summary>
+            <p>Observed facts should be traceable to evidence. Interpretations and unresolved gaps should be labeled separately. A taxpayer or CPA still confirms ownership, missing records, valuation decisions, and the final tax position.</p>
+          </details>
+          <details>
+            <summary>How does Triage use ClawUp?</summary>
+            <p>ClawUp provides the public Telegram surface used to demonstrate Triage as a read-only agent. GOAT Network, ERC-8004, and x402 inform the identity, provenance, and per-report payment design; the public demo remains intentionally constrained.</p>
+          </details>
+          <details>
+            <summary>Can I try it safely?</summary>
+            <p>Yes. Use the published public demo wallet and prompt above. Never share a seed phrase or private key, and never approve a signature or transaction for this demo.</p>
+          </details>
+        </div>
+        <aside class="guide-card reveal" aria-labelledby="clawup-guide-title">
+          <p class="mono">Stage 2 build note</p>
+          <h3 id="clawup-guide-title">How I Used ClawUp to Build Triage</h3>
+          <p>A focused account of the product choice, agent structure, public demo, safety boundaries, and what comes next.</p>
+          <a class="btn btn--ghost" href="/guides/how-i-used-clawup-to-build-triage/">Read the guide</a>
+        </aside>
+      </div>
     </section>
 
     <section class="contact reveal" id="contact">
