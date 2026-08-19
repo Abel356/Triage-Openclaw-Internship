@@ -2,7 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://triage-amber-iota.vercel.app/</loc>
-    <lastmod>2026-08-04</lastmod>
+    <lastmod>2026-08-19</lastmod>
+  </url>
+  <url>
+    <loc>https://triage-amber-iota.vercel.app/activity/</loc>
+    <lastmod>2026-08-19</lastmod>
   </url>
   <url>
     <loc>https://triage-amber-iota.vercel.app/guides/how-i-used-clawup-to-build-triage/</loc>

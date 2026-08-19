@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A clearly labeled demo dashboard showing crypto value reconciled, transactions analyzed, wallets traced, and forensic findings produced by Triage." />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <link rel="canonical" href="https://triage-amber-iota.vercel.app/activity/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Triage" />
+  <meta property="og:title" content="Triage Activity — On-chain activity reconstructed" />
+  <meta property="og:description" content="Demo analytics for transaction-level forensic analysis across wallets, tokens, contracts, and payment rails." />
+  <meta property="og:url" content="https://triage-amber-iota.vercel.app/activity/" />
+  <meta property="og:image" content="https://triage-amber-iota.vercel.app/assets/triage-preview.png" />
+  <meta property="og:image:width" content="1728" />
+  <meta property="og:image:height" content="900" />
+  <meta property="og:image:alt" content="Triage Activity demo analytics with forensic wallet tracing and clearly labeled product metrics" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Triage Activity — On-chain activity reconstructed" />
+  <meta name="twitter:description" content="Demo analytics for Triage crypto-tax forensic reconciliation." />
+  <meta name="twitter:image" content="https://triage-amber-iota.vercel.app/assets/triage-preview.png" />
+  <meta name="twitter:image:alt" content="Triage Activity demo analytics with forensic wallet tracing and clearly labeled product metrics" />
+  <title>Triage Activity — Forensic Analytics Dashboard</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600&family=Prata&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/activity.css" />
+</head>
+<body class="activity-page">
+  <div class="grain" aria-hidden="true"></div>
+  <div class="letterbox letterbox--top" aria-hidden="true"></div>
+  <div class="letterbox letterbox--bottom" aria-hidden="true"></div>
+
+  <header class="activity-nav">
+    <a class="activity-nav__brand" href="/" aria-label="Triage home">Triage</a>
+    <nav class="activity-nav__links" aria-label="Dashboard sections">
+      <a href="#overview">Overview</a>
+      <a href="#flow">Wallet flow</a>
+      <a href="#activity">Activity</a>
+      <a href="#findings">Findings</a>
+    </nav>
+    <a class="activity-nav__back" href="/">Back to site</a>
+  </header>
+
+  <main class="activity-shell">
+    <section class="activity-hero" id="overview">
+      <div>
+        <div class="activity-eyebrow"><span class="live-dot" aria-hidden="true"></span> Triage Activity <span>·</span> Demo analytics</div>
+        <h1>On-chain activity<br /><em>reconstructed by Triage.</em></h1>
+        <p>Transaction-level analysis across wallets, tokens, contracts, and payment rails.</p>
+      </div>
+      <aside class="environment-card" aria-label="Demo environment status">
+        <div class="environment-card__top">
+          <span class="tag-demo">Demo environment</span>
+          <span class="system-live"><span aria-hidden="true"></span> Analysis online</span>
+        </div>
+        <p id="snapshot-label">Snapshot updated 19 Aug 2026 · 14:32 UTC</p>
+        <div class="network-badges" id="network-badges" aria-label="Networks analyzed"></div>
+      </aside>
+    </section>
+
+    <section class="metric-grid" id="metric-grid" aria-label="Primary demo analytics"></section>
+
+    <section class="analytics-grid" aria-label="Volume and reconciliation analytics">
+      <article class="panel payment-volume-panel">
+        <header class="panel__header">
+          <div>
+            <p class="panel__kicker">Test payments</p>
+            <h2>Demo Payment Volume</h2>
+          </div>
+          <span class="panel__value" id="payment-volume-total">—</span>
+        </header>
+        <div class="payment-stack" id="payment-stack" aria-label="Demo payment volume distribution"></div>
+        <div class="chain-breakdown" id="chain-breakdown"></div>
+        <p class="panel__note">Payment simulation only. This is not revenue or customer sales.</p>
+      </article>
+
+      <article class="panel reconciliation-panel">
+        <header class="panel__header">
+          <div>
+            <p class="panel__kicker">Analyzed value</p>
+            <h2>Crypto Value Reconciled</h2>
+          </div>
+          <span class="panel__value" id="reconciled-total">—</span>
+        </header>
+        <div class="reconciliation-bars" id="reconciliation-bars"></div>
+        <p class="panel__note">Historical transaction value processed for forensic analysis.</p>
+      </article>
+    </section>
+
+    <section class="flow-section" id="flow">
+      <article class="panel flow-panel">
+        <header class="panel__header flow-panel__header">
+          <div>
+            <p class="panel__kicker">Relationship graph</p>
+            <h2>Transaction Flow</h2>
+          </div>
+          <span class="flow-confidence">Model confidence 92%</span>
+        </header>
+        <figure class="wallet-flow">
+          <div class="flow-node flow-node--source" style="--x: 50%; --y: 7%;">
+            <span>Funding source</span><strong>0x71F2...A901</strong>
+          </div>
+          <div class="flow-node" style="--x: 50%; --y: 36%;">
+            <span>Wallet A</span><strong>0x49B1...17C4</strong>
+          </div>
+          <div class="flow-node" style="--x: 18%; --y: 67%;">
+            <span>Payment</span><strong>0x88D2...09AB</strong>
+          </div>
+          <div class="flow-node flow-node--contract" style="--x: 79%; --y: 67%;">
+            <span>Contract</span><strong>0x12A7...44CF</strong>
+          </div>
+          <div class="flow-node flow-node--flagged" style="--x: 50%; --y: 94%;">
+            <span>Convergence</span><strong>0xB702...AA19</strong>
+          </div>
+          <span class="flow-edge flow-edge--one" aria-hidden="true"></span>
+          <span class="flow-edge flow-edge--two" aria-hidden="true"></span>
+          <span class="flow-edge flow-edge--three" aria-hidden="true"></span>
+          <span class="flow-edge flow-edge--four" aria-hidden="true"></span>
+          <span class="flow-edge flow-edge--five" aria-hidden="true"></span>
+          <figcaption>Common funding and downstream convergence suggest a relationship between three wallet paths.</figcaption>
+        </figure>
+        <div class="flow-legend" aria-label="Transaction flow legend">
+          <span><i class="legend-mark legend-mark--transfer"></i>Transfer</span>
+          <span><i class="legend-mark legend-mark--payment"></i>Payment</span>
+          <span><i class="legend-mark legend-mark--contract"></i>Contract</span>
+          <span><i class="legend-mark legend-mark--flagged"></i>Flagged relationship</span>
+        </div>
+      </article>
+
+      <aside class="panel trace-panel">
+        <p class="panel__kicker">Active trace</p>
+        <h2>Path reconstruction</h2>
+        <ol class="trace-list">
+          <li><span>01</span><div><strong>Funding relationship</strong><p>Source wallet funded two downstream paths.</p></div></li>
+          <li><span>02</span><div><strong>Contract interaction</strong><p>Bridge and payment contracts classified.</p></div></li>
+          <li><span>03</span><div><strong>Wallet convergence</strong><p>Funds reconverged at a linked destination.</p></div></li>
+        </ol>
+        <div class="trace-alert"><span aria-hidden="true">!</span><p><strong>Ownership not asserted.</strong> Relationship evidence requires human confirmation.</p></div>
+      </aside>
+    </section>
+
+    <section class="activity-table-section" id="activity">
+      <header class="section-header">
+        <div>
+          <p class="panel__kicker">Synthetic records</p>
+          <h2>Recent Demo Activity</h2>
+        </div>
+        <div class="table-status"><span aria-hidden="true"></span> Monitoring 2 networks</div>
+      </header>
+      <div class="table-frame">
+        <table>
+          <caption class="sr-only">Recent simulated Triage transactions. All records are demo data.</caption>
+          <thead>
+            <tr>
+              <th scope="col">Time</th>
+              <th scope="col">Type</th>
+              <th scope="col">Chain</th>
+              <th scope="col">From</th>
+              <th scope="col">To</th>
+              <th scope="col">Amount</th>
+              <th scope="col">Asset</th>
+              <th scope="col">Status</th>
+              <th scope="col">Transaction</th>
+            </tr>
+          </thead>
+          <tbody id="activity-table-body"></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="findings-section" id="findings">
+      <header class="section-header">
+        <div>
+          <p class="panel__kicker">Forensic intelligence</p>
+          <h2>What Triage Found</h2>
+        </div>
+        <p>Evidence-led findings, with uncertainty kept visible.</p>
+      </header>
+      <div class="findings-grid" id="findings-grid"></div>
+    </section>
+
+    <section class="secondary-metrics" id="secondary-metrics" aria-label="Supporting analytics"></section>
+
+    <footer class="activity-footer">
+      <div>
+        <span class="tag-demo">Demo data</span>
+        <p id="demo-disclosure">Demo environment — transaction activity shown for product testing and forensic demonstrations.</p>
+      </div>
+      <p>Triage reconstructs evidence. Human professionals review final tax treatment.</p>
+    </footer>
+  </main>
+
+  <script type="module" src="/js/activity.js"></script>
+</body>
+</html>
