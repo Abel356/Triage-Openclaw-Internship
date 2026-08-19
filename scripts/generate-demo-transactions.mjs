@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import ganache from 'ganache';
 import solc from 'solc';
-import { BrowserProvider, ContractFactory, parseUnits, formatUnits } from 'ethers';
+import { BrowserProvider, ContractFactory, parseUnits } from 'ethers';
 
 const DOMAIN = 'https://triage-amber-iota.vercel.app';
 
@@ -54,11 +54,11 @@ async function txRecord({ provider, tx, receipt, chain, tokenAddress, amount, ty
   const block = receipt ? await provider.getBlock(receipt.blockNumber) : null;
   const hash = tx.hash;
   return {
-    id: `${chain.slug.toUpperCase()}-${String(chain.counter++).padStart(3, '0')}`,
-    chain: chain.name,
-    chainId: chain.chainId,
+    id: `GOAT-${String(chain.counter++).padStart(3, '0')}`,
+    chain: 'GOAT Network Demo',
+    chainId: 2345,
     environment: 'Local EVM demo simulation',
-    networkDisclosure: 'Simulated test transaction. Not broadcast to the public mainnet.',
+    networkDisclosure: 'Simulated GOAT-style test transaction. Not broadcast to GOAT public mainnet.',
     type,
     asset: 'dUSDC',
     amount: amount == null ? null : Number(amount),
@@ -73,21 +73,23 @@ async function txRecord({ provider, tx, receipt, chain, tokenAddress, amount, ty
     tokenContract: tokenAddress,
     gasUsed: receipt?.gasUsed?.toString?.() ?? null,
     note,
-    demoExplorerUrl: `${DOMAIN}/demo-explorer/?chain=${chain.chainId}&tx=${hash}`,
+    demoExplorerUrl: `${DOMAIN}/demo-explorer/?chain=2345&tx=${hash}`,
   };
 }
 
-async function runChain(config) {
+async function runGoatDemo() {
+  const chain = { counter: 1 };
   const eip1193 = ganache.provider({
-    chain: { chainId: config.chainId, networkId: config.chainId },
+    chain: { chainId: 2345, networkId: 2345 },
     wallet: {
-      mnemonic: config.mnemonic,
+      mnemonic: 'test test test test test test test test test test test junk',
       totalAccounts: 12,
       defaultBalance: 1000,
     },
     logging: { quiet: true },
     miner: { blockTime: 0 },
   });
+
   const provider = new BrowserProvider(eip1193);
   const signers = [];
   for (let i = 0; i < 10; i++) signers.push(await provider.getSigner(i));
@@ -99,14 +101,38 @@ async function runChain(config) {
   const deployment = await token.deploymentTransaction().wait();
   const tokenAddress = await token.getAddress();
 
-  const chain = { ...config, counter: 1 };
-  const records = [];
+  // Every successful transfer is GOAT-style and uses local chain ID 2345.
+  // The successful records total exactly $550 of Demo Payment Volume.
+  const steps = [
+    { from: 0, to: 1, amount: 70, type: 'Treasury Funding' },
+    { from: 0, to: 2, amount: 55, type: 'Treasury Funding' },
+    { from: 0, to: 3, amount: 50, type: 'Treasury Funding' },
+    { from: 1, to: 4, amount: 40, type: 'Wallet Transfer' },
+    { from: 2, to: 5, amount: 35, type: 'x402-style Payment' },
+    { from: 3, to: 1, amount: 25, type: 'Refund / Return Flow' },
+    { from: 4, to: 5, amount: 22, type: 'x402-style Payment' },
+    { from: 1, to: 5, amount: 18, type: 'x402-style Payment' },
+    { from: 5, to: 2, amount: 12.5, type: 'Wallet Convergence' },
+    { from: 2, to: 5, amount: 10, type: 'x402-style Payment' },
+    { from: 0, to: 6, amount: 7.5, type: 'Treasury Funding' },
+    { from: 6, to: 5, amount: 5, type: 'x402-style Payment' },
 
-  for (const step of config.steps) {
+    { from: 0, to: 1, amount: 40, type: 'Treasury Funding' },
+    { from: 0, to: 2, amount: 40, type: 'Treasury Funding' },
+    { from: 1, to: 3, amount: 35, type: 'Wallet Transfer' },
+    { from: 2, to: 5, amount: 25, type: 'x402-style Payment' },
+    { from: 3, to: 1, amount: 20, type: 'Refund / Return Flow' },
+    { from: 1, to: 5, amount: 15, type: 'x402-style Payment' },
+    { from: 0, to: 4, amount: 12, type: 'Treasury Funding' },
+    { from: 4, to: 5, amount: 8, type: 'x402-style Payment' },
+    { from: 0, to: 5, amount: 5, type: 'x402-style Payment' },
+  ];
+
+  const records = [];
+  for (const step of steps) {
     const sender = signers[step.from];
     const recipient = addresses[step.to];
-    const connected = token.connect(sender);
-    const tx = await connected.transfer(recipient, parseUnits(String(step.amount), 6));
+    const tx = await token.connect(sender).transfer(recipient, parseUnits(String(step.amount), 6));
     const receipt = await tx.wait();
     records.push(await txRecord({
       provider,
@@ -118,28 +144,40 @@ async function runChain(config) {
       type: step.type,
       from: addresses[step.from],
       to: recipient,
-      note: step.note || '',
     }));
   }
 
-  // Add one deliberately failed transfer to make the forensic demo more realistic.
-  // It is NOT counted in Demo Payment Volume.
+  // One deliberately failed GOAT-style transaction for forensic analysis.
+  // It is excluded from the $550 Demo Payment Volume.
   try {
     const badSender = token.connect(signers[9]);
     const tx = await badSender.transfer(addresses[1], parseUnits('999999', 6), { gasLimit: 150000 });
     try {
       const receipt = await tx.wait();
       records.push(await txRecord({
-        provider, tx, receipt, chain, tokenAddress, amount: 999999,
-        type: 'Failed Transfer Attempt', from: addresses[9], to: addresses[1],
+        provider,
+        tx,
+        receipt,
+        chain,
+        tokenAddress,
+        amount: 999999,
+        type: 'Failed Transfer Attempt',
+        from: addresses[9],
+        to: addresses[1],
         status: receipt.status === 0 ? 'Failed' : 'Confirmed',
         note: 'Deliberately generated insufficient-balance test. Excluded from payment volume.',
       }));
     } catch (err) {
-      const receipt = err?.receipt;
       records.push(await txRecord({
-        provider, tx, receipt, chain, tokenAddress, amount: 999999,
-        type: 'Failed Transfer Attempt', from: addresses[9], to: addresses[1],
+        provider,
+        tx,
+        receipt: err?.receipt,
+        chain,
+        tokenAddress,
+        amount: 999999,
+        type: 'Failed Transfer Attempt',
+        from: addresses[9],
+        to: addresses[1],
         status: 'Failed',
         note: 'Deliberately generated insufficient-balance test. Excluded from payment volume.',
       }));
@@ -148,12 +186,12 @@ async function runChain(config) {
     console.warn('Could not mine failed transfer:', err.message);
   }
 
-  const volume = config.steps.reduce((sum, s) => sum + Number(s.amount), 0);
+  const demoPaymentVolume = steps.reduce((sum, step) => sum + Number(step.amount), 0);
   return {
     chain: {
-      name: config.name,
-      slug: config.slug,
-      chainId: config.chainId,
+      name: 'GOAT Network Demo',
+      slug: 'goat',
+      chainId: 2345,
       environment: 'Local EVM demo simulation',
       publicMainnet: false,
       token: { symbol: 'dUSDC', contract: tokenAddress, decimals: 6 },
@@ -167,60 +205,24 @@ async function runChain(config) {
         merchant: addresses[5],
         walletF: addresses[6],
       },
-      demoPaymentVolume: volume,
+      demoPaymentVolume,
     },
     transactions: records,
   };
 }
 
-const goatSteps = [
-  { from: 0, to: 1, amount: 70, type: 'Treasury Funding' },
-  { from: 0, to: 2, amount: 55, type: 'Treasury Funding' },
-  { from: 0, to: 3, amount: 50, type: 'Treasury Funding' },
-  { from: 1, to: 4, amount: 40, type: 'Wallet Transfer' },
-  { from: 2, to: 5, amount: 35, type: 'x402-style Payment' },
-  { from: 3, to: 1, amount: 25, type: 'Refund / Return Flow' },
-  { from: 4, to: 5, amount: 22, type: 'x402-style Payment' },
-  { from: 1, to: 5, amount: 18, type: 'x402-style Payment' },
-  { from: 5, to: 2, amount: 12.5, type: 'Wallet Convergence' },
-  { from: 2, to: 5, amount: 10, type: 'x402-style Payment' },
-  { from: 0, to: 6, amount: 7.5, type: 'Treasury Funding' },
-  { from: 6, to: 5, amount: 5, type: 'x402-style Payment' },
-];
-
-const metisSteps = [
-  { from: 0, to: 1, amount: 40, type: 'Treasury Funding' },
-  { from: 0, to: 2, amount: 40, type: 'Treasury Funding' },
-  { from: 1, to: 3, amount: 35, type: 'Wallet Transfer' },
-  { from: 2, to: 5, amount: 25, type: 'x402-style Payment' },
-  { from: 3, to: 1, amount: 20, type: 'Refund / Return Flow' },
-  { from: 1, to: 5, amount: 15, type: 'x402-style Payment' },
-  { from: 0, to: 4, amount: 12, type: 'Treasury Funding' },
-  { from: 4, to: 5, amount: 8, type: 'x402-style Payment' },
-  { from: 0, to: 5, amount: 5, type: 'x402-style Payment' },
-];
-
-const goat = await runChain({
-  name: 'GOAT Network Demo', slug: 'goat', chainId: 2345,
-  mnemonic: 'test test test test test test test test test test test junk',
-  steps: goatSteps,
-});
-const metis = await runChain({
-  name: 'Metis Demo', slug: 'metis', chainId: 1088,
-  mnemonic: 'gesture rather obey video awake genuine machine base decade lounge retire train',
-  steps: metisSteps,
-});
-
-const successful = [...goat.transactions, ...metis.transactions].filter((t) => t.status === 'Confirmed');
+const goat = await runGoatDemo();
+const successful = goat.transactions.filter((t) => t.status === 'Confirmed');
 const displayedVolume = successful.reduce((sum, t) => sum + (t.amount || 0), 0);
-if (displayedVolume !== 550) throw new Error(`Expected volume 550, got ${displayedVolume}`);
-if (goat.chain.demoPaymentVolume !== 350) throw new Error(`GOAT volume mismatch: ${goat.chain.demoPaymentVolume}`);
-if (metis.chain.demoPaymentVolume !== 200) throw new Error(`Metis volume mismatch: ${metis.chain.demoPaymentVolume}`);
-if (successful.some((t) => t.amount < 5)) throw new Error('A demo payment is below the $5 minimum');
+
+if (displayedVolume !== 550) throw new Error(`Expected GOAT demo volume 550, got ${displayedVolume}`);
+if (goat.chain.demoPaymentVolume !== 550) throw new Error(`GOAT volume mismatch: ${goat.chain.demoPaymentVolume}`);
+if (successful.some((t) => t.amount < 5)) throw new Error('A demo transaction is below the $5 minimum');
+if (successful.some((t) => t.chainId !== 2345)) throw new Error('Non-GOAT chain ID detected');
 
 const output = {
   generatedAt: new Date().toISOString(),
-  disclosure: 'These are locally simulated EVM transactions created specifically for the Triage demo. They use production chain IDs for realistic parsing, but were NOT broadcast to GOAT or Metis public mainnets and are NOT customer revenue.',
+  disclosure: 'All $550 of Demo Payment Volume is locally simulated GOAT-style EVM activity using chain ID 2345. These transactions were NOT broadcast to GOAT public mainnet and are NOT customer revenue.',
   metrics: {
     demoPaymentVolume: 550,
     valueReconciled: 84700,
@@ -231,8 +233,7 @@ const output = {
     classificationRate: 96.4,
   },
   chainBreakdown: {
-    goat: 350,
-    metis: 200,
+    goat: 550,
   },
   reconciliationBreakdown: {
     walletTransfers: 31600,
@@ -241,13 +242,13 @@ const output = {
     bridgeActivity: 9850,
     otherClassifiedActivity: 7900,
   },
-  chains: [goat.chain, metis.chain],
-  transactions: [...goat.transactions, ...metis.transactions],
+  chains: [goat.chain],
+  transactions: goat.transactions,
 };
 
 fs.mkdirSync('demo-output', { recursive: true });
 fs.writeFileSync(path.join('demo-output', 'demo-transactions.json'), JSON.stringify(output, null, 2));
-console.log(`Generated ${output.transactions.length} transaction records.`);
-console.log(`Confirmed demo volume: $${displayedVolume.toFixed(2)}`);
-console.log(`GOAT: $${goat.chain.demoPaymentVolume.toFixed(2)} | Metis: $${metis.chain.demoPaymentVolume.toFixed(2)}`);
+console.log(`Generated ${output.transactions.length} GOAT-style transaction records.`);
+console.log(`Confirmed GOAT Demo Payment Volume: $${displayedVolume.toFixed(2)}`);
+console.log('Chain ID: 2345 only');
 console.log('Output: demo-output/demo-transactions.json');
