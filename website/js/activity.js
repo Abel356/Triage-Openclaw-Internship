@@ -240,6 +240,71 @@ function renderSecondaryMetrics() {
     .join("");
 }
 
+function getFlowNodeCenter(rect) {
+  return {
+    x: rect.left + rect.width / 2,
+    y: rect.top + rect.height / 2,
+  };
+}
+
+function getFlowNodeBoundary(rect, toward) {
+  const center = getFlowNodeCenter(rect);
+  const deltaX = toward.x - center.x;
+  const deltaY = toward.y - center.y;
+  const scale = 1 / Math.max(
+    Math.abs(deltaX) / (rect.width / 2),
+    Math.abs(deltaY) / (rect.height / 2),
+  );
+
+  return {
+    x: center.x + deltaX * scale,
+    y: center.y + deltaY * scale,
+  };
+}
+
+function positionFlowEdges() {
+  const graph = document.querySelector(".wallet-flow");
+  if (!graph) return;
+
+  const graphRect = graph.getBoundingClientRect();
+
+  graph.querySelectorAll(".flow-edge[data-from][data-to]").forEach((edge) => {
+    const source = document.getElementById(edge.dataset.from);
+    const target = document.getElementById(edge.dataset.to);
+    if (!source || !target) return;
+
+    const sourceRect = source.getBoundingClientRect();
+    const targetRect = target.getBoundingClientRect();
+    const sourceCenter = getFlowNodeCenter(sourceRect);
+    const targetCenter = getFlowNodeCenter(targetRect);
+    const sourceBoundary = getFlowNodeBoundary(sourceRect, targetCenter);
+    const targetBoundary = getFlowNodeBoundary(targetRect, sourceCenter);
+    const deltaX = targetBoundary.x - sourceBoundary.x;
+    const deltaY = targetBoundary.y - sourceBoundary.y;
+    const distance = Math.hypot(deltaX, deltaY);
+    if (!distance) return;
+
+    const unitX = deltaX / distance;
+    const unitY = deltaY / distance;
+    const sourceGap = 7;
+    const targetGap = 10;
+    const startX = sourceBoundary.x + unitX * sourceGap;
+    const startY = sourceBoundary.y + unitY * sourceGap;
+    const length = Math.max(distance - sourceGap - targetGap, 0);
+
+    edge.style.left = `${startX - graphRect.left}px`;
+    edge.style.top = `${startY - graphRect.top}px`;
+    edge.style.width = `${length}px`;
+    edge.style.transform = `rotate(${Math.atan2(deltaY, deltaX)}rad)`;
+  });
+}
+
+let flowPositionFrame;
+function queueFlowEdgePosition() {
+  cancelAnimationFrame(flowPositionFrame);
+  flowPositionFrame = requestAnimationFrame(positionFlowEdges);
+}
+
 document.getElementById("snapshot-label").textContent = triageDemoData.environment.updatedLabel;
 document.getElementById("demo-disclosure").textContent = triageDemoData.environment.disclosure;
 
@@ -250,3 +315,14 @@ renderReconciliation();
 renderActivityTable();
 renderFindings();
 renderSecondaryMetrics();
+
+queueFlowEdgePosition();
+window.addEventListener("resize", queueFlowEdgePosition, { passive: true });
+document.fonts?.ready.then(queueFlowEdgePosition);
+
+const flowGraph = document.querySelector(".wallet-flow");
+if (flowGraph && "ResizeObserver" in window) {
+  const flowResizeObserver = new ResizeObserver(queueFlowEdgePosition);
+  flowResizeObserver.observe(flowGraph);
+  flowGraph.querySelectorAll(".flow-node").forEach((node) => flowResizeObserver.observe(node));
+}

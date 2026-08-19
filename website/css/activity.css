@@ -496,32 +496,45 @@
 }
 
 .flow-edge {
+  --edge-color: oklch(0.58 0.11 165 / 0.72);
   position: absolute;
   z-index: 1;
   display: block;
   height: 1px;
-  background: oklch(0.58 0.11 165 / 0.58);
+  background: var(--edge-color);
+  color: var(--edge-color);
+  pointer-events: none;
   transform-origin: left center;
 }
 
 .flow-edge::after {
   content: "";
   position: absolute;
-  right: -1px;
-  top: -3px;
-  width: 6px;
-  height: 6px;
+  right: 0;
+  top: 50%;
+  width: 7px;
+  height: 7px;
   border-top: 1px solid currentColor;
   border-right: 1px solid currentColor;
-  color: var(--primary);
-  transform: rotate(45deg);
+  transform: translateY(-50%) rotate(45deg);
 }
 
-.flow-edge--one { left: 50%; top: 14%; width: 22%; transform: rotate(90deg); }
-.flow-edge--two { left: 47%; top: 42%; width: 33%; transform: rotate(141deg); }
-.flow-edge--three { left: 54%; top: 42%; width: 31%; transform: rotate(40deg); }
-.flow-edge--four { left: 22%; top: 72%; width: 30%; transform: rotate(14deg); }
-.flow-edge--five { left: 76%; top: 72%; width: 27%; transform: rotate(166deg); border-top: 1px dashed var(--danger); background: transparent; }
+.flow-edge--two {
+  --edge-color: oklch(0.74 0.14 78 / 0.78);
+}
+
+.flow-edge--three {
+  height: 0;
+  border-top: 1px dashed var(--edge-color);
+  background: transparent;
+}
+
+.flow-edge--five {
+  --edge-color: oklch(0.66 0.17 25 / 0.88);
+  height: 0;
+  border-top: 1px dashed var(--edge-color);
+  background: transparent;
+}
 
 .wallet-flow figcaption {
   position: absolute;
@@ -932,11 +945,12 @@
   }
 
   .flow-node--flagged {
-    top: 77%;
+    top: 79%;
   }
 
-  .flow-edge--two { width: 31%; }
-  .flow-edge--three { width: 29%; }
+  .flow-node--branch {
+    top: 62%;
+  }
 
   .section-header {
     align-items: flex-start;

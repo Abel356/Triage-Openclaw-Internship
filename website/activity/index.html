@@ -100,26 +100,26 @@
           <span class="flow-confidence">Model confidence 92%</span>
         </header>
         <figure class="wallet-flow">
-          <div class="flow-node flow-node--source" style="--x: 50%; --y: 7%;">
+          <div class="flow-node flow-node--source" id="flow-source" style="--x: 50%; --y: 7%;">
             <span>Funding source</span><strong>0x71F2...A901</strong>
           </div>
-          <div class="flow-node" style="--x: 50%; --y: 36%;">
+          <div class="flow-node" id="flow-wallet-a" style="--x: 50%; --y: 36%;">
             <span>Wallet A</span><strong>0x49B1...17C4</strong>
           </div>
-          <div class="flow-node" style="--x: 18%; --y: 67%;">
+          <div class="flow-node flow-node--branch" id="flow-payment" style="--x: 18%; --y: 67%;">
             <span>Payment</span><strong>0x88D2...09AB</strong>
           </div>
-          <div class="flow-node flow-node--contract" style="--x: 79%; --y: 67%;">
+          <div class="flow-node flow-node--branch flow-node--contract" id="flow-contract" style="--x: 79%; --y: 67%;">
             <span>Contract</span><strong>0x12A7...44CF</strong>
           </div>
-          <div class="flow-node flow-node--flagged" style="--x: 50%; --y: 80%;">
+          <div class="flow-node flow-node--flagged" id="flow-convergence" style="--x: 50%; --y: 80%;">
             <span>Convergence</span><strong>0xB702...AA19</strong>
           </div>
-          <span class="flow-edge flow-edge--one" aria-hidden="true"></span>
-          <span class="flow-edge flow-edge--two" aria-hidden="true"></span>
-          <span class="flow-edge flow-edge--three" aria-hidden="true"></span>
-          <span class="flow-edge flow-edge--four" aria-hidden="true"></span>
-          <span class="flow-edge flow-edge--five" aria-hidden="true"></span>
+          <span class="flow-edge flow-edge--one" data-from="flow-source" data-to="flow-wallet-a" aria-hidden="true"></span>
+          <span class="flow-edge flow-edge--two" data-from="flow-wallet-a" data-to="flow-payment" aria-hidden="true"></span>
+          <span class="flow-edge flow-edge--three" data-from="flow-wallet-a" data-to="flow-contract" aria-hidden="true"></span>
+          <span class="flow-edge flow-edge--four" data-from="flow-payment" data-to="flow-convergence" aria-hidden="true"></span>
+          <span class="flow-edge flow-edge--five" data-from="flow-contract" data-to="flow-convergence" aria-hidden="true"></span>
           <figcaption>Common funding and downstream convergence suggest a relationship between three wallet paths.</figcaption>
         </figure>
         <div class="flow-legend" aria-label="Transaction flow legend">
