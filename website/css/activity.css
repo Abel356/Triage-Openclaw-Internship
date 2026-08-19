@@ -520,17 +520,25 @@
 .flow-edge--one { left: 50%; top: 14%; width: 22%; transform: rotate(90deg); }
 .flow-edge--two { left: 47%; top: 42%; width: 33%; transform: rotate(141deg); }
 .flow-edge--three { left: 54%; top: 42%; width: 31%; transform: rotate(40deg); }
-.flow-edge--four { left: 22%; top: 72%; width: 34%; transform: rotate(34deg); }
-.flow-edge--five { left: 76%; top: 72%; width: 33%; transform: rotate(146deg); border-top: 1px dashed var(--danger); background: transparent; }
+.flow-edge--four { left: 22%; top: 72%; width: 30%; transform: rotate(14deg); }
+.flow-edge--five { left: 76%; top: 72%; width: 27%; transform: rotate(166deg); border-top: 1px dashed var(--danger); background: transparent; }
 
 .wallet-flow figcaption {
   position: absolute;
-  left: 0.9rem;
-  right: 0.9rem;
-  bottom: 0.7rem;
+  z-index: 2;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: grid;
+  min-height: 3.25rem;
+  padding: 0.6rem 1rem;
+  place-items: center;
+  border-top: 1px solid oklch(0.22 0.016 210);
   margin: 0;
+  background: oklch(0.09 0.011 210 / 0.94);
   color: var(--muted);
   font-size: 0.65rem;
+  line-height: 1.45;
   text-align: center;
 }
 
@@ -921,6 +929,10 @@
 
   .flow-node strong {
     font-size: 0.58rem;
+  }
+
+  .flow-node--flagged {
+    top: 77%;
   }
 
   .flow-edge--two { width: 31%; }

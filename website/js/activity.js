@@ -31,8 +31,8 @@ function validateData() {
   const reconciledValue = getReconciledValue();
 
   const checks = {
-    goatTotal: chainTotals["GOAT Network"] === 350,
-    metisTotal: chainTotals.Metis === 200,
+    goatTotal: chainTotals["GOAT Network"] === 550,
+    goatOnly: triageDemoData.chains.length === 1,
     paymentVolume: paymentVolume === 550,
     minimumPayment: Math.min(...payments) >= 5,
     reconciledValue:
@@ -75,7 +75,7 @@ function renderMetrics() {
   const metrics = [
     {
       label: "Demo Payment Volume",
-      support: "Processed across supported chains",
+      support: "Processed on GOAT Network",
       value: validation.paymentVolume,
       formatter: formatCurrency,
       demo: true,
@@ -224,7 +224,7 @@ function renderFindings() {
 function renderSecondaryMetrics() {
   const metrics = [
     [triageDemoData.metrics.reportsGenerated, "Forensic Reports Generated", formatInteger],
-    [triageDemoData.metrics.primaryChains, "Primary Chains", formatInteger],
+    [triageDemoData.metrics.primaryChains, "Primary Chain", formatInteger],
     [triageDemoData.metrics.classificationRate, "Transactions Classified", (value) => `${value.toFixed(1)}%`],
     [triageDemoData.metrics.linkedWalletRelationships, "Linked Wallet Relationships Detected", formatInteger],
   ];
