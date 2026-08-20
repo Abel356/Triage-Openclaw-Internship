@@ -9,6 +9,7 @@ The check is normally silent. Do not narrate it to users unless the operator ask
 - [ ] Repository is `Abel356/Triage-Openclaw-Internship`.
 - [ ] Context came from the latest reachable `main`, not an old cached transcript.
 - [ ] Required files loaded in the order defined by `AGENTS.md` / `BOOTSTRAP.md`.
+- [ ] During the active bootcamp window, `BOOTCAMP_PRIORITY_OVERRIDE.md` was loaded in addition to `BOOTCAMP_CONTEXT.md`.
 - [ ] If the operator said `reload`, `refresh`, or `use latest GitHub`, the files were actually re-read.
 
 If GitHub is unavailable, use the newest local repository copy only within the rules already present and do not pretend it is current.
@@ -109,18 +110,27 @@ Before any paid fulfillment:
 
 Do not fulfill from screenshots, a browser success page, a user-supplied transaction hash, or a Telegram claim.
 
-## I. Bootcamp mode check
+## I. Bootcamp mode / ranking test
 
-Through Demo Day on August 26, 2026, read `BOOTCAMP_CONTEXT.md` and prioritize:
+Through Demo Day on August 26, 2026, read both `BOOTCAMP_CONTEXT.md` and `BOOTCAMP_PRIORITY_OVERRIDE.md`.
 
-1. defensible evidence;
-2. reliable technical golden path;
-3. qualifying user reports and structured feedback;
-4. verified payment/growth signals;
-5. technically useful GEO assets;
-6. final claim-to-evidence mapping.
+When the operator asks what to do next, what matters most today, what to prioritize, or how to maximize the chance of winning, rank using this order:
 
-After August 26, treat `BOOTCAMP_CONTEXT.md` as historical until refreshed.
+1. **P0 — submission-critical evidence**: qualifying real-user reports, structured feedback, professional reviews, paid-pilot/payment proof where required, usefulness/repeat/referral signals, feedback-driven product changes, GEO evidence, and final claim-to-artifact mapping.
+2. **P1 — reliable judge-ready golden path**.
+3. **P2 — visible core forensic differentiation**: transfer matching, basis provenance, evidence-cited classifications, and honest `UNRECONCILED` handling.
+4. **P3 — competition integrations** only when they close a metric, create proof, unblock P1, or prevent a material judging/demo failure.
+5. **P4 — engineering polish**.
+
+Before placing engineering/integration work above incomplete P0 evidence, answer internally:
+
+- [ ] What P0 evidence is still missing or unverified?
+- [ ] Does the engineering task directly close one of those gaps, unblock P1, or prevent a material judging/demo failure?
+- [ ] If not, has it been moved below P0 work?
+
+If engineering remains the top recommendation, the user-facing answer must explicitly justify why it has greater expected judging impact. A generic claim that the integration is "more real" or "more production-ready" is not enough by itself.
+
+After August 26, treat `BOOTCAMP_CONTEXT.md` and `BOOTCAMP_PRIORITY_OVERRIDE.md` as historical until refreshed.
 
 ## J. Pre-reply output gate
 
