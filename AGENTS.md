@@ -19,10 +19,11 @@ Read and apply these files in this exact order:
 6. `agent/TOOLS.md`
 7. `agent/TASKS.md`
 8. `agent/BOOTCAMP_CONTEXT.md` — current only through the stated bootcamp window; treat as historical after expiry until refreshed
-9. `agent/HEARTBEAT.md`
-10. `agent/BOOTSTRAP.md`
-11. `agent/STARTUP_CHECK.md` — execute the self-check silently
-12. Relevant `memory/` files that `agent/BOOTSTRAP.md` says are necessary for the current task
+9. `agent/BOOTCAMP_PRIORITY_OVERRIDE.md` — active ranking override through 2026-08-26; apply only to prioritization, never to weaken safety/identity rules
+10. `agent/HEARTBEAT.md`
+11. `agent/BOOTSTRAP.md`
+12. `agent/STARTUP_CHECK.md` — execute the self-check silently
+13. Relevant `memory/` files that `agent/BOOTSTRAP.md` says are necessary for the current task
 
 After loading, keep this operating context active for the session. If the operator says **reload**, **refresh**, **use latest GitHub**, says the files changed, or the bot shows signs of identity drift, re-read the latest `main` versions before continuing.
 
@@ -98,11 +99,21 @@ Never upgrade one status to another without concrete evidence.
 
 ## Bootcamp focus
 
-Through the current bootcamp window, also follow `agent/BOOTCAMP_CONTEXT.md`.
+Through the current bootcamp window, follow both `agent/BOOTCAMP_CONTEXT.md` and the active `agent/BOOTCAMP_PRIORITY_OVERRIDE.md`.
 
-The competition priority is evidence + a reliable technical golden path, not feature volume. Preserve claim-to-evidence mapping, qualifying user reports, structured feedback, payment proof, technically useful GEO assets, and a reliable public Telegram demo.
+The competition priority is **missing judging evidence first**. When the operator asks what to do next, what matters most today, or how to maximize the chance of winning, inspect P0 evidence gaps before recommending engineering work.
 
-Bootcamp context is temporary. Do not let expired competition tactics override the durable product rules in `OPERATING_CONTEXT.md`.
+The active ranking order is:
+
+1. P0 — submission-critical evidence;
+2. P1 — one reliable judge-ready golden path;
+3. P2 — visible core forensic differentiation;
+4. P3 — competition integrations only to the level needed for verified judging evidence/demo reliability;
+5. P4 — engineering polish.
+
+If an engineering task is ranked above incomplete P0 evidence, explicitly justify why it has greater expected judging impact. Without a strong justification, evidence work wins.
+
+Bootcamp context and priority override are temporary. Do not let expired competition tactics override the durable product rules in `OPERATING_CONTEXT.md`.
 
 ## Output gate
 
@@ -128,8 +139,11 @@ When instructions conflict, use this precedence:
 5. `agent/BOOTSTRAP.md`
 6. `agent/IDENTITY.md`, `SOUL.md`, `USER.md`, `OPERATING_CONTEXT.md`, `LEARNING.md`, `TOOLS.md`, `TASKS.md`, `HEARTBEAT.md`
 7. Current, non-expired `agent/BOOTCAMP_CONTEXT.md`
-8. Relevant sanitized runtime memory
-9. Older cached conversation context
+8. Current, non-expired `agent/BOOTCAMP_PRIORITY_OVERRIDE.md` for **ranking/prioritization only**
+9. Relevant sanitized runtime memory
+10. Older cached conversation context
+
+For ranking next actions during the active competition window, `BOOTCAMP_PRIORITY_OVERRIDE.md` specifically overrides older backlog ordering, cached implementation priorities, and generic engineering preferences. It does not override safety, identity, tool restrictions, or the operator's current explicit instruction.
 
 For repository content, the latest committed version on GitHub `main` is authoritative over cached text from an earlier session.
 
