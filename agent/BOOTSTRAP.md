@@ -18,10 +18,11 @@ Load in this exact order:
 6. `TOOLS.md` — allowed capability surface; anything outside it is ask-first/denied by default.
 7. `TASKS.md` — job definitions and acceptance criteria.
 8. `BOOTCAMP_CONTEXT.md` — current competition priorities; temporary and subject to its expiry rule.
-9. `HEARTBEAT.md` — cadence.
-10. `BOOTSTRAP.md` — this startup logic.
-11. `STARTUP_CHECK.md` — run the deterministic self-check silently.
-12. Relevant `memory/` state required for the specific task.
+9. `BOOTCAMP_PRIORITY_OVERRIDE.md` — active P0-P4 ranking override through 2026-08-26.
+10. `HEARTBEAT.md` — cadence.
+11. `BOOTSTRAP.md` — this startup logic.
+12. `STARTUP_CHECK.md` — run the deterministic self-check silently.
+13. Relevant `memory/` state required for the specific task.
 
 If the operator says `reload`, `refresh`, `use latest GitHub`, or indicates files changed, repeat the load from `main` before continuing.
 
@@ -173,18 +174,29 @@ Payment buys access to a report; it never changes the reconciliation.
 - Do not claim local-only code is reproducible from GitHub until the repository actually contains it.
 - Inspect current repository state before making code/documentation claims or changes.
 
-## 8. Bootcamp mode
+## 8. Bootcamp mode — active priority override
 
-Through August 26, 2026, load `BOOTCAMP_CONTEXT.md` and optimize for:
+Through August 26, 2026, load both `BOOTCAMP_CONTEXT.md` and `BOOTCAMP_PRIORITY_OVERRIDE.md`.
 
-1. defensible evidence;
-2. one reliable end-to-end technical golden path;
-3. qualifying user reports and structured feedback;
-4. verified growth/payment signals;
-5. strong implementation-grounded GEO assets;
-6. final claim-to-evidence mapping.
+When ranking next actions, use this order:
 
-After its expiry, treat bootcamp context as historical until updated. Durable product/safety rules remain active.
+1. **P0 — submission-critical evidence:** qualifying reports, structured feedback, professional reviews, paid-pilot/payment proof where required, usefulness/repeat/referral signals, feedback-driven product changes, GEO evidence, and final claim-to-artifact mapping.
+2. **P1 — reliable golden path:** one judge-ready end-to-end workflow.
+3. **P2 — core forensic differentiation:** transfer matching, basis provenance, evidence-cited classifications, and correct `UNRECONCILED` handling.
+4. **P3 — competition integrations:** GOAT/x402/AgentKit/ERC-8004/attestations only to the level needed to close a metric, produce proof, unblock P1, or materially improve judging/demo reliability.
+5. **P4 — engineering polish:** refactors, optional architecture, extra features, cosmetic work, and nonessential infrastructure.
+
+Mandatory self-check before recommending engineering work above incomplete P0 evidence:
+
+- What required P0 evidence is still missing or unverified?
+- Does this engineering task directly close that gap, unblock P1, or prevent a material judging/demo failure?
+- If not, do not rank it above the evidence work.
+
+If engineering is still ranked first, explicitly justify why it has greater expected judging impact.
+
+This override controls prioritization only. It never overrides safety, identity, tool restrictions, forensic integrity, or the operator's current explicit instruction.
+
+After August 26, treat the override and bootcamp context as historical until updated. Durable product/safety rules remain active.
 
 ## 9. Final startup action
 
